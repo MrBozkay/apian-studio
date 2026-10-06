@@ -114,6 +114,20 @@ header {
   .hive { min-height: 260px; order: -1; }
 }
 
+/* ---------- services ---------- */
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.service {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.service:hover { transform: translateY(-4px); border-color: rgba(255, 179, 0, 0.4); }
+.service .icon { font-size: 1.4rem; line-height: 1.2; flex-shrink: 0; }
+.service h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.service p { color: var(--muted); font-size: 0.88rem; }
+@media (max-width: 920px) { .services { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .services { grid-template-columns: 1fr; } }
+
 /* ---------- packages ---------- */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
 .card {
@@ -204,6 +218,7 @@ footer { padding: 40px 0; }
     </a>
     <nav aria-label="Ana menü">
       <ul class="nav-links">
+        <li><a href="#hizmetler">Hizmetler</a></li>
         <li><a href="#paketler">Paketler</a></li>
         <li><a href="#surec">Süreç</a></li>
         <li><a href="#neden">Neden Apian</a></li>
@@ -242,6 +257,22 @@ footer { padding: 40px 0; }
         <path class="hex" style="animation-delay:.65s; stroke-opacity:.4" d="M110 185 L165 217 L165 281 L110 313 L55 281 L55 217 Z"/>
         <path class="hex" style="animation-delay:.75s; stroke-opacity:.55" d="M200 240 L255 272 L255 336 L200 368 L145 336 L145 272 Z"/>
       </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hizmetler">
+  <div class="container">
+    <span class="eyebrow">Hizmetlerimiz</span>
+    <h2>İşinizin yükünü alan altı hizmet</h2>
+    <p class="section-lead">Paketler bu hizmetlerin sabit fiyatlı kombinasyonlarıdır — tek tek de talep edebilirsiniz.</p>
+    <div class="services">
+      <div class="service"><span class="icon" aria-hidden="true">💬</span><div><h3>AI Asistanlar</h3><p>Kendi içeriğinizle eğitilmiş RAG chatbotlar — web sitenizde, WhatsApp'ta, Instagram DM'lerinde 7/24 yanıt verir.</p></div></div>
+      <div class="service"><span class="icon" aria-hidden="true">🔄</span><div><h3>Süreç Otomasyonu</h3><p>n8n ile lead→CRM akışları, teklif takibi, fatura hatırlatma, raporlama — hata yönetimi ve izleme dahil.</p></div></div>
+      <div class="service"><span class="icon" aria-hidden="true">🌐</span><div><h3>AI Website</h3><p>İki haftada canlıya çıkan modern site; AI destekli içerik üretimi ve teknik SEO kurulumuyla.</p></div></div>
+      <div class="service"><span class="icon" aria-hidden="true">📱</span><div><h3>WhatsApp &amp; Instagram Botları</h3><p>Müşterilerinizin olduğu kanallarda satış yapan, randevu ve teklif toplayan resmî botlar.</p></div></div>
+      <div class="service"><span class="icon" aria-hidden="true">🛒</span><div><h3>E-ticaret AI</h3><p>Akıllı ürün araması, kişiselleştirilmiş öneriler, otomatik ürün açıklamaları ve kategori yönetimi.</p></div></div>
+      <div class="service"><span class="icon" aria-hidden="true">🧠</span><div><h3>AI Danışmanlık</h3><p>Hangi sürecin önce otomasyona alınacağını birlikte netleştirir, maliyet-yarar analizli yol haritası çıkarırız.</p></div></div>
     </div>
   </div>
 </section>
