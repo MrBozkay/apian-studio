@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apian Studio — Küçük İşletmeler İçin Yapay Zekâ Çözümleri</title>
+<meta name="description" content="Apian Studio; siteye gömülü AI asistanlar, n8n süreç otomasyonları ve AI destekli web siteleri ile küçük ve orta ölçekli işletmelerin işini büyütür.">
+<meta name="theme-color" content="#14100a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L90 28 L90 72 L50 95 L10 72 L10 28 Z' fill='none' stroke='%23ffb300' stroke-width='8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #14100a;
+  --bg-soft: #1c1610;
+  --bg-card: #201a11;
+  --honey: #ffb300;
+  --honey-bright: #ffc933;
+  --honey-dim: #c78c00;
+  --cream: #f5ead6;
+  --muted: #b3a288;
+  --line: rgba(255, 179, 0, 0.14);
+  --radius: 14px;
+  color-scheme: dark;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--honey); color: #14100a; }
+
+/* ---------- shared ---------- */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 88px 0; position: relative; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--honey);
+  margin-bottom: 16px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--honey); }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.12; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 14px; }
+.section-lead { color: var(--muted); max-width: 560px; font-size: 1.05rem; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--honey-bright); outline-offset: 3px; border-radius: 4px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 28px; border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; cursor: pointer; border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn-primary { background: var(--honey); color: #14100a; box-shadow: 0 4px 28px rgba(255, 179, 0, 0.28); }
+.btn-primary:hover { background: var(--honey-bright); transform: translateY(-2px); box-shadow: 0 8px 36px rgba(255, 179, 0, 0.4); }
+.btn-ghost { border-color: var(--line); color: var(--cream); background: transparent; }
+.btn-ghost:hover { border-color: var(--honey-dim); background: rgba(255, 179, 0, 0.06); transform: translateY(-2px); }
+
+/* ---------- header ---------- */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(20, 16, 10, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.08rem; }
+.brand svg { display: block; }
+.brand em { font-style: normal; color: var(--honey); }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--cream); }
+.nav-cta { padding: 9px 20px; font-size: 0.88rem; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { position: relative; padding: 110px 0 96px; overflow: hidden; }
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 45% at 75% 8%, rgba(255, 179, 0, 0.13), transparent 65%),
+    radial-gradient(ellipse 45% 40% at 12% 90%, rgba(255, 179, 0, 0.07), transparent 60%);
+}
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 5.4vw, 4rem); margin: 18px 0 20px; }
+.hero h1 em { font-style: italic; color: var(--honey); }
+.hero p.lead { color: var(--muted); font-size: 1.12rem; max-width: 520px; margin-bottom: 34px; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 36px; margin-top: 48px; flex-wrap: wrap; }
+.stat b { display: block; font-family: 'Fraunces', serif; font-size: 1.7rem; color: var(--honey-bright); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.85rem; }
+
+/* honeycomb visual */
+.hive { position: relative; display: grid; place-items: center; min-height: 380px; }
+.hive svg { width: 100%; max-width: 440px; height: auto; }
+.hex { fill: none; stroke: var(--honey); stroke-width: 1.1; opacity: 0; animation: hexin 0.9s ease forwards; transform-box: fill-box; transform-origin: center; }
+.hex-core { fill: rgba(255, 179, 0, 0.09); stroke: var(--honey-bright); stroke-width: 1.4; }
+@keyframes hexin { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+
+.fade-up { opacity: 0; animation: fadeup 0.8s cubic-bezier(0.22, 0.8, 0.3, 1) forwards; }
+.d1 { animation-delay: 0.08s; } .d2 { animation-delay: 0.18s; } .d3 { animation-delay: 0.3s; } .d4 { animation-delay: 0.42s; }
+@keyframes fadeup { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 880px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hive { min-height: 260px; order: -1; }
+}
+
+/* ---------- packages ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+.card {
+  position: relative; background: var(--bg-card);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px 28px; display: flex; flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover { transform: translateY(-6px); border-color: rgba(255, 179, 0, 0.4); box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45); }
+.card .icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: grid; place-items: center; font-size: 1.35rem;
+  background: rgba(255, 179, 0, 0.1); border: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+.card h3 { font-size: 1.35rem; margin-bottom: 8px; }
+.card .tag { color: var(--muted); font-size: 0.88rem; margin-bottom: 18px; }
+.card ul { list-style: none; margin: 0 0 22px; display: grid; gap: 9px; }
+.card li { position: relative; padding-left: 22px; color: var(--cream); font-size: 0.92rem; }
+.card li::before { content: "◆"; position: absolute; left: 0; top: 2px; color: var(--honey); font-size: 0.62rem; }
+.price { margin-top: auto; padding-top: 18px; border-top: 1px dashed var(--line); }
+.price b { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--honey-bright); font-variant-numeric: tabular-nums; }
+.price span { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 3px; }
+.card.featured { border-color: rgba(255, 179, 0, 0.5); background: linear-gradient(160deg, #26200f 0%, var(--bg-card) 55%); }
+.card .ribbon {
+  position: absolute; top: -13px; right: 22px;
+  background: var(--honey); color: #14100a;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px;
+}
+@media (max-width: 920px) { .cards { grid-template-columns: 1fr; max-width: 520px; } }
+
+/* ---------- process ---------- */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; counter-reset: step; }
+.step { position: relative; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; }
+.step::before {
+  counter-increment: step; content: "0" counter(step);
+  font-family: 'Fraunces', serif; font-size: 2rem; color: var(--honey); opacity: 0.85;
+  display: block; margin-bottom: 10px; font-variant-numeric: tabular-nums;
+}
+.step h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.step p { color: var(--muted); font-size: 0.88rem; }
+@media (max-width: 920px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---------- why ---------- */
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; }
+.why { display: flex; gap: 16px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.why .n { font-family: 'Fraunces', serif; color: var(--honey); font-size: 1.1rem; flex-shrink: 0; }
+.why h3 { font-size: 1.02rem; margin-bottom: 5px; }
+.why p { color: var(--muted); font-size: 0.9rem; }
+@media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+
+/* ---------- contact ---------- */
+.contact-wrap {
+  text-align: center; padding: 84px 24px;
+  background:
+    radial-gradient(ellipse 55% 70% at 50% 100%, rgba(255, 179, 0, 0.12), transparent 70%),
+    var(--bg-soft);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.contact-wrap h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.contact-wrap p { color: var(--muted); max-width: 480px; margin: 0 auto 32px; }
+.contact-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- footer ---------- */
+footer { padding: 40px 0; }
+.foot { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.foot p { color: var(--muted); font-size: 0.85rem; }
+.foot-links { display: flex; gap: 22px; list-style: none; }
+.foot-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.foot-links a:hover { color: var(--honey); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+  .fade-up, .hex { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Apian Studio ana sayfa">
+      <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 5 L90 28 L90 72 L50 95 L10 72 L10 28 Z" fill="none" stroke="#ffb300" stroke-width="8"/></svg>
+      Apian<em>&nbsp;Studio</em>
+    </a>
+    <nav aria-label="Ana menü">
+      <ul class="nav-links">
+        <li><a href="#paketler">Paketler</a></li>
+        <li><a href="#surec">Süreç</a></li>
+        <li><a href="#neden">Neden Apian</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#iletisim">Ücretsiz Keşif</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow fade-up">Apian Studio · AI Çözümler Atölyesi</span>
+      <h1 class="fade-up d1">İşletmeniz için çalışan <em>yapay zekâ kovanı</em></h1>
+      <p class="lead fade-up d2">Siteye gömülü AI asistanlar, süreç otomasyonları ve AI destekli web siteleri. Küçük işletmelerin tekrarlayan işini arılarımıza devredin — siz bal hasadına odaklanın.</p>
+      <div class="hero-ctas fade-up d3">
+        <a class="btn btn-primary" href="#iletisim">Ücretsiz Keşif Görüşmesi</a>
+        <a class="btn btn-ghost" href="#paketler">Paketleri Gör</a>
+      </div>
+      <div class="hero-stats fade-up d4">
+        <div class="stat"><b>8+</b><span>yıl production mühendislik</span></div>
+        <div class="stat"><b>2–4</b><span>haftada teslim</span></div>
+        <div class="stat"><b>%100</b><span>kod &amp; veri sahipliği sizde</span></div>
+      </div>
+    </div>
+    <div class="hive" aria-hidden="true">
+      <svg viewBox="0 0 400 380" role="img" aria-label="Petek deseni">
+        <path class="hex hex-core" style="animation-delay:.1s" d="M200 130 L255 162 L255 226 L200 258 L145 226 L145 162 Z"/>
+        <path class="hex" style="animation-delay:.25s; stroke-opacity:.55" d="M200 20 L255 52 L255 116 L200 148 L145 116 L145 52 Z"/>
+        <path class="hex" style="animation-delay:.35s; stroke-opacity:.55" d="M290 75 L345 107 L345 171 L290 203 L235 171 L235 107 Z"/>
+        <path class="hex" style="animation-delay:.45s; stroke-opacity:.4" d="M110 75 L165 107 L165 171 L110 203 L55 171 L55 107 Z"/>
+        <path class="hex" style="animation-delay:.55s; stroke-opacity:.55" d="M290 185 L345 217 L345 281 L290 313 L235 281 L235 217 Z"/>
+        <path class="hex" style="animation-delay:.65s; stroke-opacity:.4" d="M110 185 L165 217 L165 281 L110 313 L55 281 L55 217 Z"/>
+        <path class="hex" style="animation-delay:.75s; stroke-opacity:.55" d="M200 240 L255 272 L255 336 L200 368 L145 336 L145 272 Z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="paketler">
+  <div class="container">
+    <span class="eyebrow">Paketler</span>
+    <h2>Üç paket, sabit kapsam, sabit fiyat</h2>
+    <p class="section-lead">Her paket sözleşmeye bağlı net kapsamla teslim edilir. Sürpriz fatura yok; aylık işletim bedeli ilk günden bellidir.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="icon" aria-hidden="true">💬</div>
+        <h3>AI Asistan</h3>
+        <p class="tag">Sitenize gömülü, kendi içeriğinizle eğitilmiş akıllı asistan</p>
+        <ul>
+          <li>Kendi site + belgelerinizden eğitilmiş RAG chatbot</li>
+          <li>7/24 yanıt, SSS ve ürün/hizmet tanıtımı</li>
+          <li>Lead &amp; randevu toplama, e-posta bildirimi</li>
+          <li>Aylık konuşma raporu ve iyileştirme</li>
+        </ul>
+        <div class="price"><b>25–45 bin ₺</b><span>kurulum + 1.500–3.000 ₺/ay bakım · 2–3 hafta teslim</span></div>
+      </article>
+      <article class="card featured">
+        <span class="ribbon">En Çok Tercih Edilen</span>
+        <div class="icon" aria-hidden="true">⚙️</div>
+        <h3>Süreç Otomasyonu</h3>
+        <p class="tag">Tekrarlayan işleri n8n ile uçtan uca otomatikleştirin</p>
+        <ul>
+          <li>Lead → CRM akışı, teklif takibi, fatura hatırlatma</li>
+          <li>2–4 workflow, hata yönetimi ve izleme dahil</li>
+          <li>Self-hosted kurulum — veriniz sizde kalır</li>
+          <li>Workflow JSON + kredansiyaller %100 sizin</li>
+        </ul>
+        <div class="price"><b>40–90 bin ₺</b><span>kurulum + 2.000–4.000 ₺/ay bakım · 3–4 hafta teslim</span></div>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true">🌐</div>
+        <h3>AI Website</h3>
+        <p class="tag">İki haftada canlıya çıkan, AI ile üretilmiş modern site</p>
+        <ul>
+          <li>5–7 sayfa, mobil uyumlu modern tasarım</li>
+          <li>AI destekli içerik üretimi + teknik SEO kurulumu</li>
+          <li>İletişim formları ve harita entegrasyonu</li>
+          <li>2 revizyon turu dahil</li>
+        </ul>
+        <div class="price"><b>30–50 bin ₺</b><span>tek seferlik · 2 hafta teslim · opsiyonel içerik bakımı</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="surec" style="background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <span class="eyebrow">Süreç</span>
+    <h2>İlk görüşmeden canlıya dört adım</h2>
+    <p class="section-lead">Kısa satış döngüsü, net kilometre taşları. Her adımın çıktısı yazılıdır.</p>
+    <div class="steps">
+      <div class="step"><h3>Keşif</h3><p>30 dakikalık ücretsiz görüşme. İhtiyacınız ve mevcut sisteminiz netleşir.</p></div>
+      <div class="step"><h3>Teklif</h3><p>48 saat içinde sabit fiyat, sabit kapsam, teslim takvimi içeren teklif.</p></div>
+      <div class="step"><h3>Kurulum</h3><p>2–4 haftada kurulum, test ve canıya alma. Ara gösterimlerle ilerleriz.</p></div>
+      <div class="step"><h3>Bakım</h3><p>Aylık rapor, izleme ve iyileştirme. Sorunlarda 2 iş günü müdahale.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="neden">
+  <div class="container">
+    <span class="eyebrow">Neden Apian</span>
+    <h2>Agent'ları PowerPoint'te değil, üretimde 8 yıldır çalıştıran ekip</h2>
+    <p class="section-lead">Ajans değil, mühendislik atölyesi. Her projeyi sahiplenerek, dokümanlayarak teslim ederiz.</p>
+    <div class="why-grid">
+      <div class="why"><span class="n">◆</span><div><h3>Production deneyimi</h3><p>Azure, Databricks ve CI/CD hatlarında 8+ yıl üretim sistemi deneyimi. Kurumsal disiplin, KOBİ hızında.</p></div></div>
+      <div class="why"><span class="n">◆</span><div><h3>Sahiplik sizde</h3><p>Workflow JSON'ları, kredansiyeller, kod ve veri %100 sizin olur. Tedarikçi kilidi yok.</p></div></div>
+      <div class="why"><span class="n">◆</span><div><h3>Hız</h3><p>Haftalar değil günlerde yanıt; 2–4 haftada teslim. Büyük ajans süreçlerinin kestiği hız.</p></div></div>
+      <div class="why"><span class="n">◆</span><div><h3>Açık kaynak kökü</h3><p>n8n ve AI araçlarında açık kaynak katkıları; her şey denetlenebilir ve taşınabilir.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-wrap" id="iletisim">
+  <span class="eyebrow" style="justify-content:center;">İletişim</span>
+  <h2>Kovanı bir konuşalım</h2>
+  <p>30 dakikalık ücretsiz keşif görüşmesinde ihtiyacınızı netleştirip 48 saat içinde sabit fiyatlı teklifle dönüyoruz.</p>
+  <div class="contact-ctas">
+    <!-- TODO: e-posta adresini güncelle (merhaba@apian.studio domain alındıktan sonra) -->
+    <a class="btn btn-primary" href="mailto:merhaba@apian.studio">E-posta Gönder</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/mustafabozkaya" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/MrBozkay" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container foot">
+    <p>© 2026 Apian Studio — Mustafa Bozkaya. Yapay zekâ çözümleri atölyesi.</p>
+    <ul class="foot-links">
+      <li><a href="#paketler">Paketler</a></li>
+      <li><a href="#surec">Süreç</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
