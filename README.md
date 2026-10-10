@@ -11,7 +11,7 @@
 
 - [Bölümler](#bölümler)
 - [Teknolojiler](#teknolojiler)
-- [Tasarım (AWE)](#tasarım-awe)
+- [Tasarım (Dala v2)](#tasarım-dala-v2)
 - [Hızlı başlangıç](#hızlı-başlangıç)
 - [Komutlar](#komutlar)
 - [Proje yapısı](#proje-yapısı)
@@ -25,7 +25,7 @@ Tek sayfalık landing; her bölüm `src/components/sections/` altında ayrı bil
 
 | Bölüm | İçerik |
 |---|---|
-| Hero | WebGL petek animasyonu (three.js), serif display başlık, charcoal pill CTA'lar, mini istatistik kartları |
+| Hero | Üçgen parçacık takımyıldızı (three.js, prosedürel), 78px display başlık, mor hap CTA + ghost link |
 | Hizmetler | 6 hizmet kartı (`src/data/services.ts`) |
 | Paketler | 3 paket: AI Asistan, Süreç Otomasyonu (öne çıkan), AI Website |
 | Süreç | 4 adımlı çalışma modeli + monumental bölüm işareti |
@@ -40,19 +40,19 @@ Tüm metin ve fiyatlar `src/data/*.ts` dosyalarında yaşar — bileşenlere gö
 | Katman | Seçim |
 |---|---|
 | Framework | Next.js 15 (App Router) + React 19 + TypeScript |
-| Stil | Tailwind CSS 3.4 + AWE tasarım token'ları |
-| Font | Cormorant Garamond (display) · Inter (metin) · IBM Plex Mono (navigasyon) — `next/font` |
-| 3D / Hareket | three.js + @react-three/fiber/drei · framer-motion · Lenis smooth scroll |
+| Stil | Tailwind CSS 3.4 + Dala tasarım token'ları |
+| Font | Inter (tek typeface: 200 metin · 400 display · 600 navigasyon) — `next/font` |
+| 3D / Hareket | three.js + @react-three/fiber (parçacık takımyıldızı) · framer-motion · Lenis smooth scroll |
 | Test | Vitest (17 test) + `tsc --noEmit` |
 | Deploy | Netlify (Essential Next.js plugin v5) + GitHub Actions CI |
 
-## Tasarım (AWE)
+## Tasarım (Dala v2)
 
-"Robot observatory after midnight": neredeyse siyah zemin (`#010101`) üzerinde porselen (`#e0e0e0`) editoryal serif başlıklar, charcoal (`#1f1f23`) hap navigasyon, 1px hairline (`#252525`) çizgiler. Gölge yok, parlak vurgu rengi yok, dolgulu birincil buton yok.
+"Constellation floating on black velvet": saf siyah zemin (`#000000`) üzerinde beyaz (`#ffffff`) devasa başlıklar (78–113px, weight 400), tek mor aksan (`#8052ff`, yalnızca birincil CTA), amber (`#ffb829`) kaş etiketler. Kart, border, gölge yok — tipografi boşlukta yüzer. İmza görsel: prosedürel üçgen parçacık takımyıldızı (beyin formu).
 
 - Kaynak: [`DESIGN.md`](./DESIGN.md) (renk/tipografi/ölçek/bileşen kuralları)
-- Uygulama: `tailwind.config.ts` + `src/app/globals.css` (`awe-*` yardımcı sınıfları)
-- İçerik kolonu: 940px, kart yarıçapı 16px, haplar 100px
+- Uygulama: `tailwind.config.ts` + `src/app/globals.css` (`dala-*` yardımcı sınıfları)
+- İçerik kolonu: 1280px, bölüm aralıkları 96–128px, buton yarıçapı 24px
 
 ## Hızlı başlangıç
 
@@ -83,7 +83,7 @@ npx tsc --noEmit # tip kontrolü (lint yerine bu kullanılır)
 ```
 apian-site/
 ├── README.md                  # bu dosya
-├── DESIGN.md                  # AWE stil referansı
+├── DESIGN.md                  # Dala stil referansı (v2)
 ├── index.html                 # eski statik tek-dosya site (arşiv)
 ├── netlify.toml               # (taşındı: apian-studio-new/ içine)
 ├── .github/workflows/ci.yml   # CI: tsc + test + build
@@ -120,7 +120,7 @@ Yerel `npm install` ile Netlify/CI kurulumunun aynı ağacı kurması için `leg
 ## Yol haritası
 
 - [ ] Marka/domain kararı (`mustafabozkaya.dev` vs `apian.studio`) + gerçek gönderici mailbox'ı (şu an sitedeki mailto'lar ölü)
-- [ ] Hero'ya high-key robot görsel bandı (şu an wireframe petek placeholder)
+- [x] Hero imza görseli (prosedürel parçacık takımyıldızı — DESIGN.md v2)
 - [ ] Paketler bölümüne interaktif ROI widget'ı (hesaplayıcı modül hazır, arayüz bekleniyor)
 - [ ] Özel domain + form → e-posta akışı
 
