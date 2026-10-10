@@ -1,13 +1,12 @@
-# Apian Studio — Netlify (repo kökü: apian-site/, uygulama: apian-studio-new/)
+# Apian Studio — Netlify (uygulama dizini: apian-studio-new/)
+# Not: Git CD bağlanırken Netlify panelinde Base directory = apian-studio-new seçilmeli.
 [build]
-  base = "apian-studio-new"
   command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# Önizleme deploy'ları da aynı komutla kurulsun
 [context.deploy-preview]
   command = "npm run build"
 

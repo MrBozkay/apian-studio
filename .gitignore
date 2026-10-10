@@ -1,0 +1,7 @@
+# Local Netlify folder
+.netlify
+
+# Yerel ajan beceri dosyalari (commitlenmez)
+.agents/
+.claude/
+skills-lock.json
