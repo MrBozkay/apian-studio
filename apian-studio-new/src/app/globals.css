@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* AWE — Colors */
+    --color-void: #010101;
+    --gradient-void: linear-gradient(0deg, #010101 30%, rgba(26, 26, 26, 0.9));
+    --color-charcoal-control: #1f1f23;
+    --color-porcelain: #e0e0e0;
+    --color-machine-well: #16191b;
+    --color-hairline-ash: #252525;
+    --color-muted-steel: #828b8d;
+    --color-dormant-graphite: #444444;
+    --color-faint-steel: #646e71;
+
+    /* AWE — Font families (next/font variable'ları ile beslenir) */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    /* AWE — Type scale */
+    --text-micro-label: 10px;
+    --leading-micro-label: 1.4;
+    --tracking-micro-label: 2.4px;
+    --text-utility-nav: 13px;
+    --leading-utility-nav: 1.4;
+    --tracking-utility-nav: 1.04px;
+    --text-body: 16px;
+    --leading-body: 1.4;
+    --text-module-heading: 26px;
+    --leading-module-heading: 1.2;
+    --tracking-module-heading: -0.52px;
+    --text-feature-heading: 32px;
+    --leading-feature-heading: 1.2;
+    --tracking-feature-heading: -0.64px;
+    --text-display: 100px;
+    --leading-display: 1;
+    --tracking-display: -3px;
+    --text-display-monumental: 200px;
+    --leading-display-monumental: 0.8;
+    --tracking-display-monumental: -6px;
+
+    /* AWE — Layout */
+    --page-max-width: 940px;
+    --section-gap: 40px;
+    --card-padding: 16px;
+    --element-gap: 8px;
+
+    /* AWE — Radii */
+    --radius-cards: 16px;
+    --radius-pills: 100px;
+    --radius-images: 80px;
+    --radius-inputs: 0px;
+    --radius-compact-cards: 8px;
+
+    /* shadcn artığı değişkenler — AWE karşılıklarına sabitlendi */
+    --background: #010101;
+    --foreground: #e0e0e0;
+    --primary: #1f1f23;
+    --primary-foreground: #e0e0e0;
+    --card: #16191b;
+    --card-foreground: #e0e0e0;
+    --muted: #16191b;
+    --muted-foreground: #828b8d;
+    --border: #252525;
+    --ring: #646e71;
+    --radius: 16px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    background: #010101;
+    background-image: linear-gradient(0deg, #010101 30%, rgba(26, 26, 26, 0.9));
+    background-attachment: fixed;
+    color: #828b8d;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+
+  ::selection {
+    background: #1f1f23;
+    color: #e0e0e0;
+  }
+
+  h1, h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    color: #e0e0e0;
+  }
+
+  h3, h4 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    color: #e0e0e0;
+  }
+
+  /* Display hero: 100px / 1.0 / -3px — mobilde taşmayı önlemek için clamp */
+  .awe-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(48px, 9vw, 100px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #e0e0e0;
+  }
+
+  /* Monumental marker: 200px / 0.8 / -6px — mobilde clamp */
+  .awe-monumental {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(72px, 18vw, 200px);
+    line-height: 0.8;
+    letter-spacing: -0.03em;
+    color: #e0e0e0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 1px solid #e0e0e0;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  svg {
+    display: block;
+  }
+}
+
+@layer components {
+  /* 940px ortalı kolon */
+  .awe-container {
+    width: 100%;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Charcoal pill — tek navigasyon / kompakt kontrol */
+  .awe-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1f1f23;
+    color: #e0e0e0;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+  }
+
+  /* Underlined text control — doldurulmuş birincil buton yerine */
+  .awe-underline-control {
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 0;
+    padding: 0 0 4px 0;
+    color: #e0e0e0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* Framed media card — gölgesiz, 16px radius + 1px çerçeve + machine-well */
+  .awe-media-card {
+    border-radius: 16px;
+    border: 1px solid #252525;
+    padding: 1px;
+    background: transparent;
+  }
+
+  .awe-media-well {
+    border-radius: 15px;
+    background: #16191b;
+    overflow: hidden;
+  }
+
+  /* Compact translucent card — rgba(54,61,67,0.4), 8px, gölgesiz */
+  .awe-compact-card {
+    background: rgba(54, 61, 67, 0.4);
+    border-radius: 8px;
+    border: 1px solid #252525;
+  }
+
+  /* 1px hairline divider */
+  .awe-rule {
+    border: 0;
+    border-top: 1px solid #252525;
+  }
+}
