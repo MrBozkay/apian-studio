@@ -1,0 +1,15 @@
+# Apian Studio — Netlify (repo kökü: apian-site/, uygulama: apian-studio-new/)
+[build]
+  base = "apian-studio-new"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Önizleme deploy'ları da aynı komutla kurulsun
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"

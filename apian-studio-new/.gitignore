@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify (link durumu — commitlenmez)
+.netlify
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
