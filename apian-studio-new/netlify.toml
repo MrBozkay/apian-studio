@@ -7,6 +7,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Essential Next.js: SSR/route handler'ları Netlify Function'a çevirir.
+# Açıkça sabitlendi; otomatik tespite bırakılınca Git build'inde
+# plugin çalışmayıp ham .next yayınlanmıştı (404).
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [context.deploy-preview]
   command = "npm run build"
 
