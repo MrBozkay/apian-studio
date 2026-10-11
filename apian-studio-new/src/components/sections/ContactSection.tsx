@@ -10,7 +10,7 @@ export default function ContactSection() {
           30 dakikalık ücretsiz keşif görüşmesinde ihtiyacınızı netleştirip 48
           saat içinde sabit fiyatlı teklifle dönüyoruz.
         </p>
-        <a href="mailto:merhaba@apian.studio" className="dala-pill mb-10">
+        <a href="mailto:info.genairobotix@gmail.com" className="dala-pill mb-10">
           Ücretsiz Keşif
         </a>
         <div className="flex flex-wrap justify-center gap-8">
